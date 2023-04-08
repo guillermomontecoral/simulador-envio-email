@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const formulario = document.querySelector('#formulario');
   const btnSubmit = document.querySelector('#formulario button[type="submit"]');
   const btnReset = document.querySelector('#formulario button[type="reset"]');
-  const spinner = document.querySelector('#spinner');
+  const loader = document.querySelector('#loader');
 
   //Asignar eventos
   const validar = e => {
@@ -77,15 +77,10 @@ document.addEventListener('DOMContentLoaded', function () {
       btnSubmit.disabled = true;
       return;
     }
-      btnSubmit.disabled = false;
+    btnSubmit.disabled = false;
   }
 
-  inputEmail.addEventListener('input', validar);
-  inputAsunto.addEventListener('input', validar);
-  inputMensaje.addEventListener('input', validar);
-
-  btnReset.addEventListener('click', function(e){
-    e.preventDefault();
+  function resetForm() {
 
     formLleno.email = '';
     formLleno.asunto = '';
@@ -93,7 +88,42 @@ document.addEventListener('DOMContentLoaded', function () {
 
     formulario.reset();
     comprobarFormLleno();
+  }
+
+  const enviarFormulario = e => {
+    e.preventDefault();
+
+    loader.classList.add('row');
+    loader.classList.remove('visually-hidden');
+
+    setTimeout(() => {
+      loader.classList.remove('row');
+      loader.classList.add('visually-hidden');
+
+      resetForm();
+
+      //Crear alerta
+      const msgExito = document.createElement('P');
+      msgExito.classList.add('bg-success', 'text-white', 'p-2', 'text-center', 'rounded', 'fw-bold')
+      msgExito.textContent = 'Mensaje enviado correctamente';
+      formulario.appendChild(msgExito);
+      setTimeout(() => {
+        msgExito.remove();
+      }, 4000);
+    }, 3000);
+  }
+
+  inputEmail.addEventListener('input', validar);
+  inputAsunto.addEventListener('input', validar);
+  inputMensaje.addEventListener('input', validar);
+
+  btnReset.addEventListener('click', function (e) {
+    e.preventDefault();
+
+    resetForm();
   })
+
+  formulario.addEventListener('submit', enviarFormulario);
 
 
 });
