@@ -7,14 +7,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/loader.css">
   <title>Simulador Envío Email</title>
 </head>
 
 <body class="bg-dark">
   <div class="container">
     <h1 class="text-center text-primary text-uppercase my-5">Simulador Envío Mail</h1>
-    <div class="row justify-content-center">
-      <form id="formulario" class="row justify-content-center bg-light col-10 rounded p-4">
+    <div class="row justify-content-center bg-light">
+      <form id="formulario" class="row justify-content-center col-10 rounded p-4">
         <div class="mb-3 mt-3">
           <label for="email" class="form-label fw-bolder">Correo Electrónico</label>
           <input type="email" id="email" name="email" placeholder="Ingrese correo electrónico, ej: correo@correo.com"
@@ -42,13 +43,15 @@
         </div>
       </form>
 
-      <div class="wrapper">
-        <div class="circle"></div>
-        <div class="circle"></div>
-        <div class="circle"></div>
-        <div class="shadow"></div>
-        <div class="shadow"></div>
-        <div class="shadow"></div>
+      <div class="row justify-content-center p-4 visually-hidden">
+        <div class="wrapper">
+          <div class="circle"></div>
+          <div class="circle"></div>
+          <div class="circle"></div>
+          <div class="shadow"></div>
+          <div class="shadow"></div>
+          <div class="shadow"></div>
+        </div>
       </div>
     </div>
   </div>
